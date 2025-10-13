@@ -1,22 +1,22 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-  }
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
   }
 
   .calculator {
-    background: #fff;
+    background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    width: 320px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 340px;
     padding: 20px;
   }
 
@@ -25,8 +25,8 @@ h1 {
     color: #0ff;
     font-size: 2rem;
     text-align: right;
-    border-radius: 10px;
     padding: 15px;
+    border-radius: 10px;
     margin-bottom: 20px;
     overflow: hidden;
   }
@@ -38,17 +38,17 @@ h1 {
   }
 
   button {
-    padding: 20px;
+    padding: 18px;
     font-size: 1.2rem;
     border: none;
     border-radius: 10px;
     background: #f2f2f2;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: 0.2s;
   }
 
   button:hover {
-    background: #d1d1d1;
+    background: #dcdcdc;
   }
 
   .operator {
