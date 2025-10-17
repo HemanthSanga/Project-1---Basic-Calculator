@@ -8,40 +8,53 @@
     <script src="calculator.js" defer></script>
 </head>
 <body>
-
 <div class="calculator">
-  <h1>Basic Calculator</h1>
-  <div id="display" class="display">0</div>
+<h1>Basic Calculator</h1>
+ <div id="display" class="display">0</div>
   <div class="buttons">
+
+    <!-- Memory Buttons -->
+    <button class="memory" onclick="memoryClear()">MC</button>
+    <button class="memory" onclick="memoryRecall()">MR</button>
+    <button class="memory" onclick="memoryAdd()">M+</button>
+    <button class="memory" onclick="memorySubtract()">M-</button>
+
+    <!-- Function Row -->
     <button class="clear" onclick="clearDisplay()">C</button>
     <button onclick="deleteChar()">⌫</button>
-    <button class="sqrt" onclick="calculateSqrt()">√</button>
+    <button class="sqrt" onclick="append('√(')">√</button>
     <button class="operator" onclick="append('/')">÷</button>
 
+    <!-- Row 2 -->
     <button onclick="append('(')">(</button>
     <button onclick="append(')')">)</button>
-    <button onclick="calculatePercentage()">%</button>
+    <button onclick="append('%')">%</button>
     <button class="operator" onclick="append('*')">×</button>
 
+    <!-- Row 3 -->
     <button onclick="append('7')">7</button>
     <button onclick="append('8')">8</button>
     <button onclick="append('9')">9</button>
     <button class="operator" onclick="append('-')">−</button>
 
+    <!-- Row 4 -->
     <button onclick="append('4')">4</button>
     <button onclick="append('5')">5</button>
     <button onclick="append('6')">6</button>
     <button class="operator" onclick="append('+')">+</button>
 
+    <!-- Row 5 -->
     <button onclick="append('1')">1</button>
     <button onclick="append('2')">2</button>
     <button onclick="append('3')">3</button>
     <button onclick="append('.')">.</button>
 
+    <!-- Row 6 -->
     <button onclick="append('0')">0</button>
     <button class="equal" onclick="calculate()">=</button>
   </div>
 </div>
+
 
 </body>
 </html>

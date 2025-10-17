@@ -1,6 +1,7 @@
 const display = document.getElementById("display");
+  let memoryValue = 0; // Memory storage
 
-  // Append numbers or symbols to display
+  // Add value to display
   function append(value) {
     if (display.innerText === "0" || display.innerText === "Error") {
       display.innerText = value;
@@ -19,18 +20,22 @@ const display = document.getElementById("display");
     display.innerText = display.innerText.slice(0, -1) || "0";
   }
 
-  // Calculate using BODMAS
+  // Calculate result (follows BODMAS)
   function calculate() {
     try {
       let expression = display.innerText;
 
-      // Replace symbols
+      // Replace custom symbols with JS equivalents
       expression = expression
         .replace(/÷/g, '/')
         .replace(/×/g, '*')
-        .replace(/\^/g, '**');
+        .replace(/\^/g, '**')
+        .replace(/√\(/g, 'Math.sqrt(');
 
-      // Evaluate expression with BODMAS
+      // Handle percentages (convert "50%" → "(50/100)")
+      expression = expression.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
+
+      // Evaluate safely using Function
       const result = Function(`'use strict'; return (${expression})`)();
       display.innerText = Number.isFinite(result) ? result : "Error";
     } catch {
@@ -39,39 +44,28 @@ const display = document.getElementById("display");
     }
   }
 
-  // Square root function
-  function calculateSqrt() {
-    try {
-      const value = parseFloat(display.innerText);
-      if (isNaN(value)) {
-        display.innerText = "Error";
-      } else {
-        display.innerText = Math.sqrt(value);
-      }
-    } catch {
-      display.innerText = "Error";
-    }
+  // --- Memory Functions ---
+  function memoryAdd() {
+    memoryValue += Number(display.innerText) || 0;
   }
 
-  // Percentage function (converts current number into its percentage)
-  function calculatePercentage() {
-    try {
-      const value = parseFloat(display.innerText);
-      if (isNaN(value)) {
-        display.innerText = "Error";
-      } else {
-        display.innerText = value / 100;
-      }
-    } catch {
-      display.innerText = "Error";
-    }
+  function memorySubtract() {
+    memoryValue -= Number(display.innerText) || 0;
   }
 
-  // Keyboard support for input handling
+  function memoryRecall() {
+    display.innerText = memoryValue.toString();
+  }
+
+  function memoryClear() {
+    memoryValue = 0;
+  }
+
+  // --- Keyboard Support ---
   document.addEventListener("keydown", function(event) {
     const key = event.key;
 
-    if (/[0-9+\-*/().]/.test(key)) {
+    if (/[0-9+\-*/().%^]/.test(key)) {
       append(key);
     } else if (key === "Enter" || key === "=") {
       event.preventDefault();
@@ -80,9 +74,13 @@ const display = document.getElementById("display");
       deleteChar();
     } else if (key === "Escape") {
       clearDisplay();
+    } else if (key.toLowerCase() === "r") { // "r" for sqrt
+      append("√(");
     } else if (key === "%") {
-      calculatePercentage();
-    } else if (key.toLowerCase() === "s") { // Shortcut for square root
-      calculateSqrt();
+      append("%");
+    } else if (key === ".") {
+      append(".");
+    } else if (key.toLowerCase() === "m") {
+      memoryRecall();
     }
   });

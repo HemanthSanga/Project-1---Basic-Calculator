@@ -19,3 +19,9 @@ Input Handling:
 
 Error Handling:
 (i) Mathematical errors like dividing by Zero are handled.
+
+✅ BODMAS/BIDMAS (correct operator precedence)
+✅ Keyboard and button input
+✅ Square root (√) and percentage (%)
+✅ Memory functions — M+, M-, MR, MC (store, subtract, recall, clear memory)
+✅ Modern, user-friendly interface

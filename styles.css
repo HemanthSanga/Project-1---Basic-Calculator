@@ -1,4 +1,4 @@
-* {
+  * {
     box-sizing: border-box;
   }
 
@@ -15,15 +15,14 @@
   h1 {
     text-align: center;
     color: #333;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
   }
-
   .calculator {
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    width: 340px;
+    width: 360px;
     padding: 20px;
   }
 
@@ -51,7 +50,7 @@
     border-radius: 10px;
     background: #f2f2f2;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: 0.2s;
   }
 
   button:hover {
@@ -92,4 +91,13 @@
 
   .sqrt:hover {
     background: #42a5f5;
+  }
+
+  .memory {
+    background: #9575cd;
+    color: white;
+  }
+
+  .memory:hover {
+    background: #7e57c2;
   }
