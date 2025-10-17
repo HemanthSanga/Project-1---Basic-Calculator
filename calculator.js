@@ -67,7 +67,7 @@ const display = document.getElementById("display");
     }
   }
 
-  // Keyboard support
+  // Keyboard support for input handling
   document.addEventListener("keydown", function(event) {
     const key = event.key;
 
